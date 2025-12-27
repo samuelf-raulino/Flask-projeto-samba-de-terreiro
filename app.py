@@ -1,7 +1,16 @@
 from flask import Flask,redirect,url_for,render_template,request,flash,session
 from werkzeug.security import generate_password_hash,check_password_hash
+import os
 app = Flask("__main__")
 app.secret_key = "123"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
+
 @app.route("/")
 def main():
     return redirect(url_for("home"))
@@ -100,4 +109,4 @@ def adicionar_musico():
         return redirect(url_for("musicos"))
     return render_template("adicionar_musico.html")
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
