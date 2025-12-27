@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Músicos</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .musicos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 320px; /* desktop */
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+        }
+
+        .add-button {
+            display: block;
+            margin: 30px auto 0;
+            padding: 14px 22px;
+            background-color: #1e293b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .add-button:hover {
+            background-color: #334155;
+        }
+
+        /* 📱 AJUSTES PARA CELULAR */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .card img {
+                height: 220px; /* celular */
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+
+            .add-button {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Músicos</h1>
+
+    <div class="musicos">
+        {% for musico in musicos %}
+            <div class="card">
+                <img src="{{ musico[4] }}" alt="Foto do músico">
+
+                <p><strong>Nome:</strong> {{ musico[1] }}</p>
+                <p><strong>Idade:</strong> {{ musico[2] }}</p>
+                <p><strong>Descrição:</strong> {{ musico[3] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="/adicionar_musico" class="add-button">+ Adicionar músico</a>
+
+</body>
+</html>

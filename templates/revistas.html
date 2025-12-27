@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revistas</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f5f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .revista {
+            background-color: white;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .revista a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .revista h3 {
+            margin: 0 0 10px 0;
+            color: #0f172a;
+        }
+
+        .revista img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .acoes {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .botao {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2563eb;
+            color: white;
+            padding: 14px 22px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            font-weight: bold;
+        }
+
+        .botao:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* 📱 AJUSTES PARA CELULAR */
+        @media (max-width: 600px) {
+            main {
+                padding: 15px;
+            }
+
+            header {
+                padding: 15px;
+            }
+
+            .revista {
+                padding: 15px;
+            }
+
+            .revista img {
+                max-height: 220px;
+            }
+
+            .botao {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Revistas</h1>
+    </header>
+
+    <main>
+        {% for revista in revistas %}
+            <div class="revista">
+                <a href="{{ revista[4] }}">
+                    <h3>{{ revista[1] }}</h3>
+                    <img src="{{ revista[3] }}" alt="Capa da revista {{ revista[1] }}">
+                </a>
+            </div>
+        {% endfor %}
+
+        <div class="acoes">
+            <a href="/adicionar_revista" class="botao">
+                ➕ Adicionar revista
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
